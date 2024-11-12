@@ -1,0 +1,28 @@
+/* Container for the entire component */
+.component-container {
+    position: relative;
+    padding: 1rem;
+}
+
+/* Spinner container restricted to the component area */
+.spinner-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Visible and hidden classes for the spinner */
+.visible {
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}

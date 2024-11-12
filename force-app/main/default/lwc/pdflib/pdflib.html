@@ -1,0 +1,57 @@
+<template>
+  <lightning-card title="Image to PDF Converter" icon-name="utility:file">
+    <div class="component-container">
+      <div class={spinnerClass}>
+        <lightning-spinner alternative-text="Uploading..." size="large"></lightning-spinner>
+      </div>
+
+      <div class="slds-m-around_small">
+        <lightning-input
+          label="File Name"
+          name="fileNameInput"
+          value={fileName}
+          onchange={handleFileNameChange}
+        ></lightning-input>
+      </div>
+
+      <div class="slds-m-around_small">
+        <lightning-input
+          label="Select Files"
+          name="fileUploader"
+          onchange={handleFilesChange}
+          type="file"
+          multiple
+        ></lightning-input>
+      </div>
+
+      <div class="slds-m-around_small">
+        <template if:true={selectedFiles.length}>
+          <ul>
+            <template for:each={selectedFiles} for:item="file" for:index="index">
+              <li key={file.name}>
+                {file.name}
+                <lightning-button-icon
+                  icon-name="utility:close"
+                  variant="bare"
+                  onclick={handleCancelFile}
+                  alternative-text="Cancel"
+                  title="Cancel"
+                  data-index={index}
+                ></lightning-button-icon>
+              </li>
+            </template>
+          </ul>
+        </template>
+      </div>
+
+      <div class="slds-m-around_small">
+        <lightning-button
+          variant="brand"
+          label="Upload"
+          onclick={handleUpload}
+          disabled={isLoading}
+        ></lightning-button>
+      </div>
+    </div>
+  </lightning-card>
+</template>
